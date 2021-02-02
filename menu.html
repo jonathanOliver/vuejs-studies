@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet menu</title>
+
+    <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <!-- Importação VUE-->
+    <script src="assets/js/vue.js"></script>
+</head>
+<body>
+    <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top header-transparent">
+   <div class="container d-flex justify-content-between align-items-center">
+
+     <div class="logo">
+       <h1 class="text-light"><a href="index.html"><span><img src="https://www.baymediasoft.com/storage/media/ypJamzghonxi7JmtXFyGgwdQZjCRe2ILInidzrOr-image(1050x450-crop).png"/></span></a></h1>
+     </div>
+
+     <nav class="nav-menu float-right d-none d-lg-block" id="result_menu">
+       <ul>
+         <li class="active"><a href="index.html">Home</a></li>
+         <li><a href="about.html">Quem somos</a></li>
+         <li class="drop-down"><a href="">Serviços</a>
+           <ul>
+             <li class="drop-down"><a href="#">Acabamento</a>
+               <ul>
+                 <li><a href="#">Pisos - Revestimentos - Porcelanatos </a></li>
+                 <li><a href="#">Gesso</a></li>
+                 <li><a href="#">Reparos</a></li>
+               </ul>
+             </li>
+             <li class="drop-down"><a href="#">Alvenaria</a>
+               <ul>
+                 <li><a href="#">Alvenaria de vedação </a></li>
+                 <li><a href="#">Alvenaria estrutural </a></li>
+                 <li><a href="#">Carpintaria</a></li>
+                 <li><a href="#">Telhado e coberturas</a></li>
+               </ul>
+             </li>
+             <li  class="drop-down"><a href="#">Elétrica</a>
+               <ul>
+                 <li><a href="#">Projeto</a></li>
+                 <li><a href="#">Instalações Industriais</a></li>
+                 <li><a href="#">Reparos</a></li>
+               </ul>
+             </li>
+             <li><a href="#">Hidraulica</a></li>
+             <li><a href="#">Hipermeabilização</a></li>
+             <li><a href="#">Pintura</a>
+               <ul>
+                 <li><a href="#">Fachadas</a></li>
+                 <li><a href="#">Pinturas internas e externas</a></li>
+                 <li><a href="#">Reparos</a></li>
+               </ul>
+             </li>
+
+           </ul>
+         </li>
+         <li><a href="portfolio.html">Portfólio</a></li>
+         <li><a href="contact.html">Contato</a></li>
+         <li class = "pipeMenu">|</li>
+         <li><a href="#" @click="alterMenu" v-show="isVisible"> <i class=" icon bx bx-log-in"></i> Área do cliente</a></li>
+         
+            <li v-if = "isLoginVisible == true">
+                
+                <i class="bi bi-lock" data-aos="fade-up" data-aos-delay="100"></i><input type="email" class="form-control" placeholder="Usuário">
+                <input type="password" class="form-control" placeholder="Senha">
+                <button type="button" class="btn btn-success" @click="access"><i class="icon bx bx-log-in" ></i> Acessar</button>
+           
+            </li>
+
+       </ul>
+     </nav><!-- .nav-menu -->
+
+   </div>
+   <div id="loading" class="loader" v-if = "loading == true"></div>
+    </body>
+
+    <script>
+        let root = new Vue({
+            el: "#result_menu",
+            data: {
+                user: "admin" ,    
+                password:"1234",
+                isVisible:true,
+                isLoginVisible:false,
+                loading: false
+            },
+            methods:{
+                 alterMenu :function(){
+                    this.isVisible = !this.isVisible;
+                    this.isLoginVisible = !this.isLoginVisible
+                },
+
+                access:function(){
+                    console.log(this.user);
+                    if(this.user == "admin" && this.password == "1234"){
+                        this.loading = !this.loading
+                    }else{
+                        alert ('Usuário e senha errada!');
+                    }
+                }
+            }
+            
+        });
+        
+    </script>

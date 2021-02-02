@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Importação VUE-->
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id='root'>
+        <input v-model ='novaFruta'>
+        <button v-on:click ='insert'>Inserir</button>
+
+        <h1>Lista de furtas</h1>
+        <ul >
+            <li v-for= 'fruta in frutas'>{{fruta}}</li>
+        </ul>
+        <p v-model ='totalFrutas'>Tota: {{totalFrutas}}</p>
+    </div>
+
+    <script>
+        let root = new Vue({
+            el: "#root",
+            data: {
+                frutas:[] ,    
+                novaFruta:'',
+                totalFrutas:0
+            },
+            methods:{
+                insert :function(){
+                    if(this.frutas.push(this.novaFruta)){
+                        this.totalFrutas ++;
+                    }
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>
